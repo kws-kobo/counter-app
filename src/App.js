@@ -8,7 +8,6 @@ function App() {
     return savedTotalGames !== null ? savedTotalGames : '';
   });
 
-  // 🔸 開始ゲーム数の state と localStorage連携
   const [startGameCount, setStartGameCount] = useState(() => {
     const savedStartGameCount = localStorage.getItem('startGameCount_input');
     return savedStartGameCount !== null ? savedStartGameCount : '';
@@ -32,6 +31,11 @@ function App() {
     setStartGameCount(event.target.value);
   };
 
+  // --- 入力フィールドからフォーカスが外れたときにキーボードを閉じる関数 ---
+  const handleInputBlur = (event) => {
+    event.target.blur(); // input要素のblurメソッドを呼び出す
+  };
+
 
 const handleResetAll = () => {
   setTotalGames('');
@@ -39,7 +43,6 @@ const handleResetAll = () => {
   localStorage.removeItem('totalGames_input');
   localStorage.removeItem('startGameCount_input');
 
-  // 🔸 6つのカウンターすべてをリセット
   for (let i = 1; i <= 6; i++) {
     localStorage.removeItem(`counter_${i}`);
   }
@@ -51,7 +54,7 @@ const handleResetAll = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>独立カウンター x 6</h1>
+        <h1>小役カウンター</h1>
 
         <div style={{ margin: '20px 0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <label htmlFor="totalGamesInput" style={{ marginRight: '10px' }}>
@@ -62,6 +65,7 @@ const handleResetAll = () => {
             type="number"
             value={totalGames}
             onChange={handleTotalGamesChange}
+            onBlur={handleInputBlur} // onBlurイベントを追加
             placeholder="例: 100"
             style={{ padding: '5px', fontSize: '16px', marginRight: '10px' }}
           />
@@ -75,6 +79,7 @@ const handleResetAll = () => {
             type="number"
             value={startGameCount}
             onChange={handleStartGameCountChange}
+            onBlur={handleInputBlur} // onBlurイベントを追加
             placeholder="例: 0"
             style={{ padding: '5px', fontSize: '16px', marginRight: '10px' }}
           />
