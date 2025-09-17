@@ -1,38 +1,93 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f0f2f5;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
-  background-color: #282c34;
+  background-color: #ffffff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  color: #282c34;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.counter-container {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.count-display {
+  font-size: 5rem;
+  font-weight: bold;
+  color: #007bff;
+  padding: 0.5rem 2rem;
+  border-radius: 8px;
+  background-color: #e9ecef;
+  min-width: 100px;
+  display: inline-block;
+}
+
+.increment-button {
+  font-size: 1.5rem;
+  padding: 10px 30px;
+  border-radius: 5px;
+  border: none;
+  background-color: #007bff;
   color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.App-link {
-  color: #61dafb;
+.increment-button:hover {
+  background-color: #0056b3;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+/* --- 新しいCSSクラスとメディアクエリ --- */
+/* カウンター全体を囲むコンテナのスタイル */
+.counters-wrapper {
+  display: flex;
+  flex-direction: column; /* デフォルトは縦積み */
+  align-items: center;
+  gap: 30px;
+}
+
+/* 各カウンターの行のスタイル */
+.counters-row {
+  display: flex;
+  flex-direction: row; /* デフォルトは横並び */
+  justify-content: center;
+  gap: 50px;
+}
+
+/* スマートフォン向け（画面幅が768px以下の場合） */
+@media (max-width: 768px) {
+  .counters-row {
+    flex-direction: column; /* カウンターを縦に並べる */
+    gap: 20px; /* 縦に並んだ時の間隔 */
   }
 }
